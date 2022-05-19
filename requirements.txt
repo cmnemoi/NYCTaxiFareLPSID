@@ -1,0 +1,7 @@
+pandas
+scikit-learn
+seaborn
+plotly
+tqdm
+streamlit
+googlemaps==4.6.0
