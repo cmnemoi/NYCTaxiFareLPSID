@@ -1,5 +1,5 @@
 import streamlit as st
-from back import load_form_fields, get_trip_fare, trim
+from back import *
 
 st.title("Prédiction du prix de la course de taxis à New York")
 st.subheader("Par Enzo Risbetz et Charles-Meldhine Madi Mnemoi")
