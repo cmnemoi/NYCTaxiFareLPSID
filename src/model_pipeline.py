@@ -22,7 +22,7 @@ def import_dataset() -> tuple:
     X and Y are `pandas.DataFrame`.
     """
     dataset = pd.read_csv("data/explored_dataset.csv").dropna()
-    X = dataset.drop(["tpep_pickup_datetime", "tpep_dropoff_datetime", "RatecodeID", "PULocationID", "DOLocationID", "total_amount"], axis=1)
+    X = dataset.drop(["tpep_pickup_datetime", "tpep_dropoff_datetime", "store_and_fwd_flag", "PULocationID", "DOLocationID", "total_amount"], axis=1)
     y = dataset[["total_amount"]]
 
     return X, y
@@ -38,7 +38,7 @@ def fit_model(model, X, y) -> Pipeline:
 
     discrete_variables = ["VendorID", "passenger_count",
        "PULocationLabel", "DOLocationLabel", "payment_type", "day", "hour",
-       "is_night_trip", "airport_trip"]
+       "is_night_trip", "airport_trip", "is_sunday"]
     quantitative_variables = ["trip_distance"]
     
     discrete_transformer = (make_pipeline(OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=256)), discrete_variables)
@@ -60,6 +60,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
     print("Training model...")
+    print(X_train.columns)
     pipeline = fit_model(LinearRegression(), X_train, y_train)
     print("Model trained.")
 

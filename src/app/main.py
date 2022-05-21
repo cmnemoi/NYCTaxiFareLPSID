@@ -14,7 +14,7 @@ with st.form("Submit Form"):
     variables["passenger_count"] = [st.number_input("Nombre de passagers", min_value=1, max_value=6)]
     variables["date"] = [st.date_input(label="Date prévue de la course")]
     variables["time"] = [st.time_input("Heure prévue de la course")]
-    variables["trip_distance"] = [st.number_input("Longueur du trajet (en km)", min_value=0.1, max_value=160.0, step=0.5, value=1.0) / 1.609]
+    variables["trip_distance"] = [st.number_input("Longueur du trajet (en km)", min_value=0.1, max_value=100.0*1.609, step=0.5, value=1.0) / 1.609]
 
     submitted = st.form_submit_button("Prédire le prix de la course")
     if submitted:
