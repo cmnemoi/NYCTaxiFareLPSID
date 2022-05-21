@@ -31,7 +31,7 @@ def fit_model(model, X, y) -> Pipeline:
     """Fit the given model to the (X,y) given as arguments ( (X_train, y_train) by default)
     Returns a sklearn.Pipeline object"""
 
-    discrete_variables = ["VendorID", "store_and_fwd_flag", "passenger_count",
+    discrete_variables = ["VendorID", "passenger_count",
        "PULocationID", "DOLocationID", "payment_type", "day", "hour",
        "is_night_trip", "airport_trip"]
     quantitative_variables = ["trip_distance"]
