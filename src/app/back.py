@@ -1,14 +1,19 @@
 import json
+import os
 
 import joblib
 import pandas as pd
 
 def load_form_fields() -> dict:
-    with open("variables_labels.json") as f:
-        return json.load(f)
+    try:
+        with open("src/app/variables_labels.json") as f:
+            return json.load(f)
+    except FileNotFoundError as e:
+        print(e)
+        print(os.getcwd())
 
 def get_trip_fare(data: dict) -> float:
-    model = joblib.load("../../models/linear_regression_model.joblib")
+    model = joblib.load("models/linear_regression_model.joblib")
 
     sample = pd.DataFrame.from_dict(data)
     sample = add_calculated_columns(sample)
