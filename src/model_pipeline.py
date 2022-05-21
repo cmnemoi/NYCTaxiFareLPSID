@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.compose import make_column_transformer
-from sklearn.preprocessing import OrdinalEncoder, StandardScaler
+from sklearn.preprocessing import OrdinalEncoder, StandardScaler, FunctionTransformer
 from sklearn.pipeline import Pipeline, make_pipeline
 
 from joblib import dump
@@ -27,6 +27,11 @@ def import_dataset() -> tuple:
 
     return X, y
 
+def trim(column: pd.Series) -> np.array:
+    """Return a pandas.Series in which each value above 99e centile is trimmed at 99e centile"""
+    quantile = column.quantile(q=.99)[0]
+    return np.array([quantile if x[0] > quantile else x for x in column.values], dtype="object").reshape(-1, 1)
+
 def fit_model(model, X, y) -> Pipeline:
     """Fit the given model to the (X,y) given as arguments ( (X_train, y_train) by default)
     Returns a sklearn.Pipeline object"""
@@ -37,7 +42,7 @@ def fit_model(model, X, y) -> Pipeline:
     quantitative_variables = ["trip_distance"]
     
     discrete_transformer = (make_pipeline(OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=256)), discrete_variables)
-    numeric_transformer = (make_pipeline(StandardScaler()), quantitative_variables)
+    numeric_transformer = (make_pipeline(FunctionTransformer(trim), StandardScaler()), quantitative_variables)
 
     preprocessor = make_column_transformer(discrete_transformer, numeric_transformer)
 

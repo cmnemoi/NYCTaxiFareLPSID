@@ -3,14 +3,16 @@ import os
 
 import joblib
 import pandas as pd
+import numpy as np
+
+def trim(column: pd.Series) -> np.array:
+    """Return a pandas.Series in which each value above 99e centile is trimmed at 99e centile"""
+    quantile = column.quantile(q=.99)[0]
+    return np.array([quantile if x[0] > quantile else x for x in column.values], dtype="object").reshape(-1, 1)
 
 def load_form_fields() -> dict:
-    try:
-        with open("src/app/variables_labels.json") as f:
-            return json.load(f)
-    except FileNotFoundError as e:
-        print(e)
-        print(os.getcwd())
+    with open("src/app/variables_labels.json") as f:
+        return json.load(f)
 
 def get_trip_fare(data: dict) -> float:
     model = joblib.load("models/linear_regression_model.joblib")
