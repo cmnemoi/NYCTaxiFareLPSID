@@ -9,13 +9,13 @@ with st.form("Submit Form"):
     variables = {}
 
     for field, field_content in form_fields.items():
-        variables["field"] = st.selectbox(label=field, options=field_content)
+        variables[field] = [st.selectbox(label=field, options=field_content)]
     
-    variables["passenger_count"] = st.number_input("Nombre de passagers", min_value=1, max_value=6)
-    variables["date"] = st.date_input(label="Date prévue de la course")
-    variables["time"] = st.time_input("Heure prévue de la course")
-
+    variables["passenger_count"] = [st.number_input("Nombre de passagers", min_value=1, max_value=6)]
+    variables["date"] = [st.date_input(label="Date prévue de la course")]
+    variables["time"] = [st.time_input("Heure prévue de la course")]
+    variables["trip_distance"] = [st.number_input("Longueur du trajet (en km)", min_value=0.1, max_value=160.0, step=0.5, value=1.0)]
 
     submitted = st.form_submit_button("Prédire le prix de la course")
     if submitted:
-        get_trip_fare()
+        st.write(f"Votre trajet coûtera environ {get_trip_fare(variables):.2f} $.")

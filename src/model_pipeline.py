@@ -21,8 +21,8 @@ def import_dataset() -> tuple:
     """Import dataset, get only relevant variables and returns it in a (X,y) `tuple`.
     X and Y are `pandas.DataFrame`.
     """
-    dataset = pd.read_csv("data/explored_dataset.csv")
-    X = dataset.drop(["tpep_pickup_datetime", "tpep_dropoff_datetime", "RatecodeID", "PULocationLabel", "DOLocationLabel", "total_amount"], axis=1)
+    dataset = pd.read_csv("data/explored_dataset.csv").dropna()
+    X = dataset.drop(["tpep_pickup_datetime", "tpep_dropoff_datetime", "RatecodeID", "PULocationID", "DOLocationID", "total_amount"], axis=1)
     y = dataset[["total_amount"]]
 
     return X, y
@@ -32,7 +32,7 @@ def fit_model(model, X, y) -> Pipeline:
     Returns a sklearn.Pipeline object"""
 
     discrete_variables = ["VendorID", "passenger_count",
-       "PULocationID", "DOLocationID", "payment_type", "day", "hour",
+       "PULocationLabel", "DOLocationLabel", "payment_type", "day", "hour",
        "is_night_trip", "airport_trip"]
     quantitative_variables = ["trip_distance"]
     
