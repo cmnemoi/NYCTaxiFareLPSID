@@ -1,9 +1,12 @@
 import json
-import os
 
 import joblib
 import pandas as pd
 import numpy as np
+
+import googlemaps
+
+import streamlit as st
 
 
 def trim(column: pd.Series) -> np.array:
@@ -49,3 +52,15 @@ def add_calculated_columns(sample: pd.DataFrame) -> pd.DataFrame:
        "is_night_trip", "airport_trip", "is_sunday", "trip_distance"]]
     
     return sample
+
+def get_trip_distance(location_1: str, location_2: str) -> float:
+    gmaps = googlemaps.Client(key=st.secrets["GOOGLE_MAPS_API"])
+
+    distance_matrix_result = gmaps.distance_matrix(location_1, location_2)
+
+    if distance_matrix_result["status"] != "OK":
+        raise Exception(f"Une erreur s'est produite durant l'appel à l'API Google Maps : {distance_matrix_result['status']}")
+
+    distance = distance_matrix_result["rows"][0]["elements"][0]["distance"]["value"] / 1000 ##convert in km
+
+    return distance
