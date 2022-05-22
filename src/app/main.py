@@ -1,7 +1,7 @@
 import streamlit as st
 from back import load_form_fields, get_trip_fare, trim
 
-st.title("Prédiction du prix de la course de taxis à New York")
+st.title("Estimation du prix d'une course de taxis à New York")
 st.subheader("Par Enzo Risbetz et Charles-Meldhine Madi Mnemoi")
 
 with st.form("Submit Form"):
@@ -22,6 +22,6 @@ with st.form("Submit Form"):
         variables["VendorID"] = st.selectbox(label="Société de taxis", options=form_fields["Société de taxis"])
         
         
-    submitted = st.form_submit_button("Prédire le prix de la course")
+    submitted = st.form_submit_button("Calculer le prix de la course")
     if submitted:
         st.write(f"Votre trajet coûtera environ {get_trip_fare(variables):.2f} $.")
