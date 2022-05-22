@@ -19,7 +19,7 @@ def get_trip_fare(data: dict) -> float:
     model = joblib.load("models/linear_regression_model.joblib")
 
     sample = pd.DataFrame.from_dict(data)
-    sample = pd.DataFrame(encode_values(sample))
+    sample = encode_values(sample)
     sample = add_calculated_columns(sample)
 
     return model.predict(sample)[0][0]
