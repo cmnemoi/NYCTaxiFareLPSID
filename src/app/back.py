@@ -22,11 +22,11 @@ def get_trip_fare(data: dict) -> float:
     sample = encode_values(sample)
     sample = add_calculated_columns(sample)
 
-    return model.predict(sample)[0][0]
+    return model.predict(sample)[0,0]
 
 def encode_values(sample: pd.DataFrame) -> pd.DataFrame:
-    sample.loc[0, "Société de taxis"] = 1 if sample.loc[0, "Société de taxis"] == "Creative Mobile Technologies, LLC" else 2
-    sample.loc[0, "Type de paiement"] = 1 if sample.loc[0, "Société de taxis"] == "Carte de crédit" else 2
+    sample.loc[0, "VendorID"] = 1 if sample.loc[0, "VendorID"] == "Creative Mobile Technologies, LLC" else 2
+    sample.loc[0, "payment_type"] = 1 if sample.loc[0, "payment_type"] == "Carte de crédit" else 2
     
     return sample
 
@@ -34,14 +34,9 @@ def add_calculated_columns(sample: pd.DataFrame) -> pd.DataFrame:
     sample.loc[0, "day"] = sample.loc[0, "date"].day
     sample.loc[0, "hour"] = sample.loc[0, "time"].hour
     sample.loc[0, "is_night_trip"] = 1 if sample.loc[0, "hour"] < 5 else 0
-    sample.loc[0, "airport_trip"] = 1 if "Airport" in sample.loc[0, "Lieu de départ"] \
-                                    or "Airport" in sample.loc[0, "Lieu d'arrivée"] else 0
+    sample.loc[0, "airport_trip"] = 1 if "Airport" in sample.loc[0, "PULocationLabel"] \
+                                    or "Airport" in sample.loc[0, "DOLocationLabel"] else 0
     sample.loc[0, "is_sunday"] = 1 if sample.loc[0, "day"] == 6 else 0
-
-    sample.rename(columns={"Société de taxis": "VendorID", 
-                            "Type de paiement": "payment_type", 
-                            "Lieu de départ": "PULocationLabel", 
-                            "Lieu d'arrivée": "DOLocationLabel"}, inplace=True)
 
     sample["day"] = sample["day"].astype(int)
     sample["hour"] = sample["hour"].astype(int)
