@@ -19,9 +19,16 @@ def get_trip_fare(data: dict) -> float:
     model = joblib.load("models/linear_regression_model.joblib")
 
     sample = pd.DataFrame.from_dict(data)
+    sample = pd.DataFrame(encode_values(sample))
     sample = add_calculated_columns(sample)
 
     return model.predict(sample)[0][0]
+
+def encode_values(sample: pd.DataFrame) -> pd.DataFrame:
+    sample.loc[0, "Société de taxis"] = 1 if sample.loc[0, "Société de taxis"] == "Creative Mobile Technologies, LLC" else 2
+    sample.loc[0, "Type de paiement"] = 1 if sample.loc[0, "Société de taxis"] == "Carte de crédit" else 2
+    
+    return sample
 
 def add_calculated_columns(sample: pd.DataFrame) -> pd.DataFrame:
     sample.loc[0, "day"] = sample.loc[0, "date"].day
@@ -42,9 +49,8 @@ def add_calculated_columns(sample: pd.DataFrame) -> pd.DataFrame:
     sample["airport_trip"] = sample["airport_trip"].astype(int)
     sample["is_sunday"] = sample["is_sunday"].astype(int)
 
-    sample = sample[['VendorID', 'passenger_count', 'trip_distance', 
-                    'payment_type','PULocationLabel', 'DOLocationLabel', 
-                    'day', 'hour', 'is_sunday',
-                    'is_night_trip', 'airport_trip']]
+    sample = sample[["VendorID", "passenger_count",
+       "PULocationLabel", "DOLocationLabel", "payment_type", "day", "hour",
+       "is_night_trip", "airport_trip", "is_sunday", "trip_distance"]]
     
     return sample

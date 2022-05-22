@@ -131,3 +131,4 @@ dmypy.json
 #test
 test.py
 test.ipynb
+test.csv

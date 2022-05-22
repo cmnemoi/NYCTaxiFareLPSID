@@ -8,7 +8,7 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.compose import make_column_transformer
+from sklearn.compose import ColumnTransformer, make_column_transformer
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler, FunctionTransformer
 from sklearn.pipeline import Pipeline, make_pipeline
 
@@ -40,11 +40,25 @@ def fit_model(model, X, y) -> Pipeline:
        "PULocationLabel", "DOLocationLabel", "payment_type", "day", "hour",
        "is_night_trip", "airport_trip", "is_sunday"]
     quantitative_variables = ["trip_distance"]
-    
-    discrete_transformer = (make_pipeline(OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=256)), discrete_variables)
+
+    #columns need to be in the same order than column transformers to be properly transformed, wtf ?
+    X = X[["VendorID", "passenger_count",
+       "PULocationLabel", "DOLocationLabel", "payment_type", "day", "hour",
+       "is_night_trip", "airport_trip", "is_sunday", "trip_distance"]]
+
+    cat_encoders = [(OrdinalEncoder(categories=[np.unique(X[column]).tolist()], 
+                        handle_unknown="use_encoded_value", 
+                        unknown_value=265, dtype=int), [column])
+                        for column in discrete_variables]
+
     numeric_transformer = (make_pipeline(FunctionTransformer(trim), StandardScaler()), quantitative_variables)
 
-    preprocessor = make_column_transformer(discrete_transformer, numeric_transformer)
+    preprocessor = make_column_transformer(cat_encoders[0],cat_encoders[1],
+                                            cat_encoders[2],cat_encoders[3],
+                                            cat_encoders[4],cat_encoders[5],
+                                            cat_encoders[6],cat_encoders[7],
+                                            cat_encoders[8],cat_encoders[9],
+                                            numeric_transformer)
 
     model = make_pipeline(preprocessor, model)
 
@@ -60,7 +74,6 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
     print("Training model...")
-    print(X_train.columns)
     pipeline = fit_model(LinearRegression(), X_train, y_train)
     print("Model trained.")
 
