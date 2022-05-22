@@ -132,3 +132,6 @@ dmypy.json
 test.py
 test.ipynb
 test.csv
+
+#streamlit secrets
+secrets.toml
