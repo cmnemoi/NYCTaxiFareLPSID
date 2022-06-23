@@ -1,4 +1,4 @@
-# ProjetDataScienceLPSID
+# NYCTaxiFareLPSID
 Repository pour le premier projet de Data Science de la LP SID qui consiste à participer à la compétition Kaggle [New York City Taxi Fare Prediction](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction) par Enzo Risbetz et Charles-Meldhine Madi Mnemoi.
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://bit.ly/LPRoubaixNYCTaxiFare)
