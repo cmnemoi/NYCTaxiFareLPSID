@@ -15,6 +15,9 @@ pip install -r requirements.txt
 
 To run the app locally : `streamlit run src/app/main.py`
 
+You need a Google Maps API key to run the app locally. You can get one [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
+Then create a `.streamlit/secrets.toml` file with the following content: `GOOGLE_MAPS_API="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"`
+
 Tools used: Python (Pandas, Seaborn, Scikit-learn, Intel Extension for Scikit-learn, tune-sklearn, Streamlit), Google Maps API
 
 Our approach was as follows:
