@@ -1,11 +1,15 @@
-pandas==1.4.2
-scikit-learn==1.0.2
-seaborn==0.11.2
-plotly==5.8.0
-tqdm==4.64.0
-protobuf>=3.12,<4
-altair<5
-streamlit==1.9.0
-googlemaps==4.6.0
-scikit-learn-intelex==2021.5.3
-ray[tune]==1.12.1
+certifi @ file:///private/tmp/certifi-20240307-4705-qr7qpt/certifi-2024.2.2
+cffi @ file:///private/tmp/cffi-20231211-48023-ij9e0o/cffi-1.16.0
+click @ file:///private/tmp/python-click-20231211-45230-mb75fi/click-8.1.7
+distlib @ file:///private/tmp/python-distlib-20231212-4643-rs59kw/distlib-0.3.8
+filelock @ file:///private/tmp/python-filelock-20231112-5255-1qu5zmd/filelock-3.13.1/dist/filelock-3.13.1-py3-none-any.whl#sha256=57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c
+gpg==1.23.2
+MarkupSafe @ file:///private/tmp/python-markupsafe-20231211-21183-b3v5y5/MarkupSafe-2.1.3
+numpy @ file:///private/tmp/numpy-20240206-5694-3lh52k/numpy-1.26.4
+packaging @ file:///private/tmp/python-packaging-20231211-14207-bavgf4/packaging-23.2
+platformdirs @ file:///private/tmp/python-platformdirs-20231204-5092-dluipp/platformdirs-4.1.0
+pycparser @ file:///private/tmp/pycparser-20231211-28349-ej6eoa/pycparser-2.21
+PyYAML @ file:///private/tmp/pyyaml-20231018-5353-1w5l4nf/PyYAML-6.0.1
+setuptools @ file:///private/tmp/python-setuptools-20231224-4479-ahikux/setuptools-69.0.3
+virtualenv @ file:///private/tmp/virtualenv-20231201-5210-6po70i/virtualenv-20.25.0
+wheel @ file:///opt/homebrew/Cellar/python%403.12/3.12.3/libexec/wheel-0.43.0-py3-none-any.whl#sha256=80a49545e5e5ef2abeb79ec254447300d41dfb76914fc65efa6da8dd0a766052
