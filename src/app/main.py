@@ -24,8 +24,7 @@ with st.form("Submit Form"):
         
     submitted = st.form_submit_button("Calculer le prix de la course")
     if submitted:
-        trip_distance = get_trip_distance(fields["PULocationLabel"], 
-                fields["DOLocationLabel"])
+        trip_distance = get_trip_distance(fields["PULocationLabel"], fields["DOLocationLabel"])
         
         fields["trip_distance"] = 0.1 if trip_distance < 0.1 else trip_distance
         
