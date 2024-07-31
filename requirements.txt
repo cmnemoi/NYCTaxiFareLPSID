@@ -1,15 +1,62 @@
-certifi @ file:///private/tmp/certifi-20240307-4705-qr7qpt/certifi-2024.2.2
-cffi @ file:///private/tmp/cffi-20231211-48023-ij9e0o/cffi-1.16.0
-click @ file:///private/tmp/python-click-20231211-45230-mb75fi/click-8.1.7
-distlib @ file:///private/tmp/python-distlib-20231212-4643-rs59kw/distlib-0.3.8
-filelock @ file:///private/tmp/python-filelock-20231112-5255-1qu5zmd/filelock-3.13.1/dist/filelock-3.13.1-py3-none-any.whl#sha256=57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c
-gpg==1.23.2
-MarkupSafe @ file:///private/tmp/python-markupsafe-20231211-21183-b3v5y5/MarkupSafe-2.1.3
-numpy @ file:///private/tmp/numpy-20240206-5694-3lh52k/numpy-1.26.4
-packaging @ file:///private/tmp/python-packaging-20231211-14207-bavgf4/packaging-23.2
-platformdirs @ file:///private/tmp/python-platformdirs-20231204-5092-dluipp/platformdirs-4.1.0
-pycparser @ file:///private/tmp/pycparser-20231211-28349-ej6eoa/pycparser-2.21
-PyYAML @ file:///private/tmp/pyyaml-20231018-5353-1w5l4nf/PyYAML-6.0.1
-setuptools @ file:///private/tmp/python-setuptools-20231224-4479-ahikux/setuptools-69.0.3
-virtualenv @ file:///private/tmp/virtualenv-20231201-5210-6po70i/virtualenv-20.25.0
-wheel @ file:///opt/homebrew/Cellar/python%403.12/3.12.3/libexec/wheel-0.43.0-py3-none-any.whl#sha256=80a49545e5e5ef2abeb79ec254447300d41dfb76914fc65efa6da8dd0a766052
+aiosignal==1.3.1
+altair==5.3.0
+attrs==23.2.0
+blinker==1.8.2
+cachetools==5.4.0
+certifi==2024.7.4
+charset-normalizer==3.3.2
+click==8.1.7
+contourpy==1.2.1
+cycler==0.12.1
+filelock==3.15.4
+fonttools==4.53.1
+frozenlist==1.4.1
+fsspec==2024.6.1
+gitdb==4.0.11
+GitPython==3.1.43
+googlemaps==4.10.0
+idna==3.7
+Jinja2==3.1.4
+joblib==1.4.2
+jsonschema==4.23.0
+jsonschema-specifications==2023.12.1
+kiwisolver==1.4.5
+markdown-it-py==3.0.0
+MarkupSafe==2.1.5
+matplotlib==3.9.1
+mdurl==0.1.2
+msgpack==1.0.8
+numpy==2.0.1
+packaging==24.1
+pandas==2.2.2
+pillow==10.4.0
+plotly==5.23.0
+protobuf==5.27.2
+pyarrow==17.0.0
+pydeck==0.9.1
+Pygments==2.18.0
+pyparsing==3.1.2
+python-dateutil==2.9.0.post0
+pytz==2024.1
+PyYAML==6.0.1
+ray==2.34.0
+referencing==0.35.1
+requests==2.32.3
+rich==13.7.1
+rpds-py==0.19.1
+scikit-learn==1.5.1
+scipy==1.14.0
+seaborn==0.13.2
+six==1.16.0
+smmap==5.0.1
+streamlit==1.37.0
+tenacity==8.5.0
+tensorboardX==2.6.2.2
+threadpoolctl==3.5.0
+toml==0.10.2
+toolz==0.12.1
+tornado==6.4.1
+tqdm==4.66.4
+typing_extensions==4.12.2
+tzdata==2024.1
+urllib3==2.2.2
