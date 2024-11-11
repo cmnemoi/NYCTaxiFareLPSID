@@ -135,3 +135,9 @@ test.csv
 
 #streamlit secrets
 secrets.toml
+
+# Ruff
+.ruff_cache/
+
+# Aider
+.aider*
