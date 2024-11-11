@@ -28,6 +28,6 @@ setup-git-hooks:
 	git config core.hooksPath hooks
 
 test:
-	uv run pytest -v --cov=python_project_template --cov-report=xml
+	uv run pytest -v --cov=src --cov-report=xml
 
 .PHONY: all check check-format check-lint install lint test
