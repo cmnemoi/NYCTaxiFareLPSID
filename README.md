@@ -6,10 +6,10 @@ Repository for the first Data Science project of Lille's Bachelor of Economics, 
 
 # Installation
 
-You need Python 3.9+ to run this project. If you have Anaconda or Miniconda, create a virtual environment with the following commands and then install the required packages:
+You need Python 3.10 to run this project.
 ```bash
-conda create -n NYCTaxiFareLPSID python=3.9 -y
-conda activate NYCTaxiFareLPSID
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
