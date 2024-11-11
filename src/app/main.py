@@ -1,5 +1,5 @@
 import streamlit as st
-from back import *
+from back import get_trip_distance, get_trip_fare, load_form_fields
 
 
 st.title("Estimation du prix d'une course de taxis à New York")
@@ -11,22 +11,36 @@ with st.form("Submit Form"):
 
     columns = st.columns(2)
     with columns[0]:
-        fields["PULocationLabel"] = st.selectbox(label="Lieu de départ", options=form_fields["Lieu de départ"])
-        fields["DOLocationLabel"] = st.selectbox(label="Lieu d'arrivée", options=form_fields["Lieu d'arrivée"])
+        fields["PULocationLabel"] = st.selectbox(
+            label="Lieu de départ", options=form_fields["Lieu de départ"]
+        )
+        fields["DOLocationLabel"] = st.selectbox(
+            label="Lieu d'arrivée", options=form_fields["Lieu d'arrivée"]
+        )
         fields["date"] = [st.date_input(label="Date prévue de la course")]
     with columns[1]:
-        fields["passenger_count"] = [st.number_input("Nombre de passagers", min_value=1, max_value=6)]
-        fields["payment_type"] = st.selectbox(label="Type de paiement", options=form_fields["Type de paiement"])
-        fields["VendorID"] = st.selectbox(label="Société de taxis", options=form_fields["Société de taxis"])
+        fields["passenger_count"] = [
+            st.number_input("Nombre de passagers", min_value=1, max_value=6)
+        ]
+        fields["payment_type"] = st.selectbox(
+            label="Type de paiement", options=form_fields["Type de paiement"]
+        )
+        fields["VendorID"] = st.selectbox(
+            label="Société de taxis", options=form_fields["Société de taxis"]
+        )
 
-    
     fields["time"] = [st.time_input("Heure prévue de la course")]
-        
+
     submitted = st.form_submit_button("Calculer le prix de la course")
     if submitted:
-        trip_distance = get_trip_distance(fields["PULocationLabel"], fields["DOLocationLabel"])
-        
+        trip_distance = get_trip_distance(
+            fields["PULocationLabel"], fields["DOLocationLabel"]
+        )
+
         fields["trip_distance"] = 0.1 if trip_distance < 0.1 else trip_distance
-        
-        st.write("Votre trajet de {:.2f}km coûtera environ {:.2f} $."
-                .format(fields["trip_distance"], get_trip_fare(fields)))
+
+        st.write(
+            "Votre trajet de {:.2f}km coûtera environ {:.2f} $.".format(
+                fields["trip_distance"], get_trip_fare(fields)
+            )
+        )
