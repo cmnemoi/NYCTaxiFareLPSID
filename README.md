@@ -1,6 +1,7 @@
 # NYCTaxiFareLPSID
 
 [![Continous Integration](https://github.com/cmnemoi/NYCTaxiFareLPSID/actions/workflows/ci.yaml/badge.svg)](https://github.com/cmnemoi/NYCTaxiFareLPSID/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/github/cmnemoi/NYCTaxiFareLPSID/graph/badge.svg?token=31F9TEL4OU)](https://codecov.io/github/cmnemoi/NYCTaxiFareLPSID)
 
 Repository for the first Data Science project of Lille's Bachelor of Economics, which consists of participating in the Kaggle competition [New York City Taxi Fare Prediction](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction) by Enzo Risbetz and Charles-Meldhine Madi Mnemoi.
 
