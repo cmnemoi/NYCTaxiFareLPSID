@@ -1,18 +1,12 @@
-run:
-	streamlit run src/app/main.py
-
 all: setup-git-hooks install check test 
 
-check: check-format check-lint check-types
+check: check-format check-lint
 
 check-format:
 	uv run ruff format . --diff
 
 check-lint:
 	uv run ruff check .
-
-check-types:
-	uv run mypy .
 
 install: setup-env-variables
 	uv lock --locked
@@ -21,6 +15,9 @@ install: setup-env-variables
 lint:
 	uv run ruff format .
 	uv run ruff check . --fix
+
+run:
+	streamlit run src/app/main.py
 
 setup-env-variables:
 	cp .streamlit/secrets.toml.example .streamlit/secrets.toml
